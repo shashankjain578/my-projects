@@ -1,0 +1,94 @@
+<html>
+<head>
+    <title>flight search</title>
+    <style>
+        .formChange {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+    </style>
+</head>
+<body>
+    <h1>flight search engine</h1>
+    <hr>
+    <table border="1">
+        <tr><td><button class="formC" onclick="openCity(event, 'return form')">return</button></td>
+            <td><button class="formC" onclick="openCity(event, 'one way form')">one way</button></td></tr>
+        <Tr><td colspan="2" >
+            <form id="return form" class="formChange">
+                <input type="text" placeholder="origin city"><br>
+                <input type="text" placeholder="destination"><br>
+                <input list="text" placeholder=" departure date"><br>
+                <input list="text" placeholder=" return date"><br>
+                <input list="passenger" placeholder="no. of passenger"><br>
+                <datalist id="passenger">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>0
+                </datalist>
+                <input type="submit" value="search">
+            </form>
+            <form id="one way form" class="formChange">
+                <input type="text" placeholder="origin city"><br>
+                <input type="text" placeholder="destination city"><br>
+                <input type="text" placeholder="departure dste"><br>
+                <input list="passengers" placeholder="no. of passenger"><br>
+                <datalist id="passengers">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                    <option value="4"></option>
+                    <option value="5"></option>
+                </datalist>
+                <input type="submit" value="Search">
+            </form></td>
+        </Tr>
+    </table>
+    <table border="1"> 
+<tr>
+    <td>refine flight search</td>
+</tr>
+<tr>
+    <td>
+        <input type="range" min="1000" max="10000" value="5000" id="myRange">
+    </td>
+    
+</tr>
+<tr>
+    <td>
+        <p>Price <span id="demo"></span> </p> 
+    </td>
+</tr>
+    </table>
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+        
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+        </script>
+        <script>
+            function openCity(evt, cityName) {
+              var i, formChange, formC;
+              formChange = document.getElementsByClassName("formChange");
+              for (i = 0; i < formChange.length; i++) {
+                formChange[i].style.display = "none";
+              }
+              formC = document.getElementsByClassName("formC");
+              for (i = 0; i < formC.length; i++) {
+                formC[i].className = formC[i].className.replace(" active", "");
+              }
+              document.getElementById(cityName).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+            </script>
+
+        
+</body>    
+</html>
